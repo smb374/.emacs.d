@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ magit-version
  list-packages
  w3m
  emms-playlist-clear
  emms-add-directory-tree
  emms-bilibili
  load-theme
- ycmd-open
 )
 
 ;; ----- smex-data -----
@@ -29,4 +29,5 @@
  (untabify . 4)
  (ycmd-open . 1)
  (load-theme . 4)
+ (magit-version . 1)
 )
