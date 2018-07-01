@@ -1,0 +1,32 @@
+
+;; ----- smex-history -----
+(
+ list-packages
+ w3m
+ emms-playlist-clear
+ emms-add-directory-tree
+ emms-bilibili
+ load-theme
+ ycmd-open
+)
+
+;; ----- smex-data -----
+(
+ (customize . 4)
+ (list-packages . 12)
+ (package-install . 1)
+ (emms . 4)
+ (emms-add-directory-tree . 6)
+ (bongo . 2)
+ (dionysos-fs-list . 1)
+ (w3m . 3)
+ (w3m-fb-mode . 1)
+ (linum-mode . 1)
+ (emms-bilibili . 4)
+ (emms-playlist-clear . 6)
+ (emms-play-url . 1)
+ (emms-play-file . 1)
+ (untabify . 4)
+ (ycmd-open . 1)
+ (load-theme . 4)
+)
