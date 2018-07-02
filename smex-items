@@ -1,8 +1,8 @@
 
 ;; ----- smex-history -----
 (
- magit-version
  list-packages
+ magit-version
  w3m
  emms-playlist-clear
  emms-add-directory-tree
@@ -13,7 +13,7 @@
 ;; ----- smex-data -----
 (
  (customize . 4)
- (list-packages . 12)
+ (list-packages . 15)
  (package-install . 1)
  (emms . 4)
  (emms-add-directory-tree . 6)

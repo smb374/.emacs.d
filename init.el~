@@ -50,7 +50,7 @@
  '(global-company-mode t)
  '(package-selected-packages
    (quote
-    (emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
+    (airline-themes spaceline-all-the-icons spaceline powerline-evil powerline spacemacs-theme emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
  '(w3m-default-display-inline-images t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -73,6 +73,15 @@
   ;(add-to-list 'evil-buffer-regexps '("\\*\\*" . normal))
   (add-to-list 'evil-buffer-regexps '("2048" . insert))
   (add-to-list 'evil-buffer-regexps '("w3m" . insert))
+  )
+;; powerline
+(use-package powerline
+  :ensure t
+  :config
+  (require 'powerline)
+  (require 'powerline-evil)
+                                        ;(powerline-evil-vim-color-theme)
+  (powerline-default-theme)
   )
 ;;auto pair
 (electric-pair-mode 1)
@@ -295,7 +304,11 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
+(use-package emamux
+  :ensure t
+  :config
+  (require 'emamux)
+  )
 ;;other settings
 ;reload ~/.emacs
 (defun reload-init-file ()
