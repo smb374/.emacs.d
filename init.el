@@ -336,6 +336,7 @@
 (global-set-key (kbd "<C-M-right>") 'next-buffer)
 (setq org-startup-indented t);set org indent mode
 (global-set-key (kbd "C-x C-t") 'term);call terminal
+(setq vc-follow-symlinks t);follow symlink by default
 ;; update title of term
 (defun update-title ()
   (interactive)
