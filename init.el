@@ -73,6 +73,7 @@
   ;(add-to-list 'evil-buffer-regexps '("\\*\\*" . normal))
   (add-to-list 'evil-buffer-regexps '("2048" . insert))
   (add-to-list 'evil-buffer-regexps '("w3m" . insert))
+  (add-to-list 'evil-buffer-regexps '("\\*terminal\\*" . emacs))
   )
 ;;powerline
 (use-package powerline
