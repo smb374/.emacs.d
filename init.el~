@@ -1,7 +1,6 @@
 ;;; package --- Summary
 ;;; Commentary:
 (require 'package)
-;;; Code:
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
@@ -48,9 +47,10 @@
      (resume . emms-player-simple-resume))))
  '(etcc-use-color t)
  '(global-company-mode t)
+ '(icon-map-list (quote (x-gtk-stock-map)))
  '(package-selected-packages
    (quote
-    (smart-mode-line-powerline-theme smart-mode-line airline-themes spaceline-all-the-icons spaceline powerline-evil powerline spacemacs-theme emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
+    (dashboard smart-mode-line-powerline-theme smart-mode-line airline-themes spaceline-all-the-icons spaceline powerline-evil powerline spacemacs-theme emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
  '(powerline-gui-use-vcs-glyph t)
  '(w3m-default-display-inline-images t))
 (custom-set-faces
@@ -74,7 +74,7 @@
 ;;   (setq sml/theme 'powerline)
 ;;   (sml/setup)
 ;;   )
-;;;powerline
+;; powerline
 (use-package powerline
   :ensure t
   :config
@@ -82,21 +82,24 @@
   (require 'airline-themes)
   (load-theme 'airline-badwolf)
   )
-;; (use-package spaceline
-;;   :ensure t
-;;   :config
-;;   (spaceline-emacs-theme)
-;;   )
-;; (use-package spaceline-all-the-icons
-;;   :ensure t
-;;   :after spaceline
-;;   :config
-;;   (spaceline-all-the-icons-theme)
-;;   (spaceline-all-the-icons--setup-package-updates)
-;;   (spaceline-all-the-icons--setup-git-ahead)
-;;   (spaceline-all-the-icons--setup-neotree)
-;;   )
+
+(when window-system
+    (progn
+      (use-package spaceline
+       :ensure t
+       :config
+       (require 'spaceline-config)
+       (setq powerline-default-separator 'arrow)
+       (spaceline-compile)
+       (spaceline-helm-mode t)
+       (spaceline-spacemacs-theme)
+       )
+     )
+)
+
+
 ;;auto pair
+
 (electric-pair-mode 1)
 (setq eletric-pair-pairs '(
         (?\` . ?\`)
@@ -113,6 +116,12 @@
   (setq nyan-animate-nyancat t)
   (setq nyan-wavy-trail t)
   )
+;; dashboard
+;; (use-package dashboard
+;;   :ensure t
+;;   :config
+;;   (dashboard-setup-startup-hook)
+;;   )
 (use-package evil
   :ensure t
   :config
@@ -167,12 +176,15 @@
 	  "en" 'next-error
 	  "ep" 'previous-error
           "cd" 'cd
+          "u"  'undo-tree-undo
+          "ru" 'undo-tree-redo
+          "vu" 'undo-tree-visualize
 	 )
 	)
   (use-package evil-surround
     :ensure t
     :config
-    (global-evil-surround-mode)
+    (global-evil-surround-mode 1)
 	)
   (use-package evil-indent-textobject
     :ensure t
@@ -335,6 +347,8 @@
 ;;other settings
 ;reload ~/.emacs
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
 (defun reload-init-file ()
   "Reload Config."
   (interactive)

@@ -52,6 +52,7 @@
    (quote
     (dashboard smart-mode-line-powerline-theme smart-mode-line airline-themes spaceline-all-the-icons spaceline powerline-evil powerline spacemacs-theme emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
  '(powerline-gui-use-vcs-glyph t)
+ '(powerline-height nil)
  '(w3m-default-display-inline-images t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -74,7 +75,7 @@
 ;;   (setq sml/theme 'powerline)
 ;;   (sml/setup)
 ;;   )
-;;;powerline
+;; powerline
 (use-package powerline
   :ensure t
   :config
@@ -82,20 +83,22 @@
   (require 'airline-themes)
   (load-theme 'airline-badwolf)
   )
-;; (use-package spaceline
-;;   :ensure t
-;;   :config
-;;   (spaceline-emacs-theme)
-;;   )
-;; (use-package spaceline-all-the-icons
-;;   :ensure t
-;;   :after spaceline
-;;   :config
-;;   (spaceline-all-the-icons-theme)
-;;   (spaceline-all-the-icons--setup-package-updates)
-;;   (spaceline-all-the-icons--setup-git-ahead)
-;;   (spaceline-all-the-icons--setup-neotree)
-;;   )
+
+(when window-system
+    (progn
+      (use-package spaceline
+       :ensure t
+       :config
+       (require 'spaceline-config)
+       (setq powerline-default-separator 'arrow)
+       (spaceline-compile)
+       (spaceline-helm-mode t)
+       (spaceline-spacemacs-theme)
+       )
+     )
+)
+
+
 ;;auto pair
 
 (electric-pair-mode 1)
