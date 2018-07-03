@@ -174,6 +174,9 @@
 	  "en" 'next-error
 	  "ep" 'previous-error
           "cd" 'cd
+          "u"  'undo-tree-undo
+          "ru" 'undo-tree-redo
+          "vu" 'undo-tree-visualize
 	 )
 	)
   (use-package evil-surround
