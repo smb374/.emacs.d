@@ -65,16 +65,6 @@
 )
 (load-theme 'monokai t)
 ;;evil key binds
-(with-eval-after-load 'evil
-  ;; use evil mode in the buffer below.
-  (add-to-list 'evil-buffer-regexps '("\\*Packages\\*" . normal))
-  ;(add-to-list 'evil-buffer-regexps '("\\*NeoTree\\*" . normal))
-  (add-to-list 'evil-buffer-regexps '("\\*Help\\*" . normal))
-  ;(add-to-list 'evil-buffer-regexps '("\\*\\*" . normal))
-  (add-to-list 'evil-buffer-regexps '("2048" . insert))
-  (add-to-list 'evil-buffer-regexps '("w3m" . insert))
-  (add-to-list 'evil-buffer-regexps '("\\*terminal\\*" . emacs))
-  )
 ;;powerline
 ;;;spaceline
 ;; (use-package smart-mode-line
@@ -122,10 +112,10 @@
   (setq nyan-animate-nyancat t)
   (setq nyan-wavy-trail t)
   )
-(require 'evil)
 (use-package evil
   :ensure t
   :config
+  (require 'evil)
   (require 'evil-leader)
   (setq evil-leader/in-all-states 1)
   (global-evil-leader-mode)
@@ -141,6 +131,16 @@
   (setq evil-replace-state-cursor '("#ff0000" bar))
   (setq evil-operator-state-cursor '("#ff0000" hbar))
   ;; More configuration goes here
+  (with-eval-after-load 'evil
+    ;; use evil mode in the buffer below.
+    (add-to-list 'evil-buffer-regexps '("\\*Packages\\*" . normal))
+    ;(add-to-list 'evil-buffer-regexps '("\\*NeoTree\\*" . normal))
+    (add-to-list 'evil-buffer-regexps '("\\*Help\\*" . normal))
+    ;(add-to-list 'evil-buffer-regexps '("\\*\\*" . normal))
+    (add-to-list 'evil-buffer-regexps '("2048" . insert))
+    (add-to-list 'evil-buffer-regexps '("w3m" . insert))
+    (add-to-list 'evil-buffer-regexps '("\\*terminal\\*" . emacs))
+    )
   (use-package evil-leader
 	:ensure t
 	:config
@@ -297,7 +297,14 @@
   (setq linum-format "%d ")
   )
 
-(require 'neotree)
+(use-package neotree
+  :ensure t
+  :config
+  (require 'neotree)
+  (setq neo-smart-open t)
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  )
 ; Emacs key bindings(nerd commenter)
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 (global-set-key (kbd "C-c l") 'evilnc-quick-comment-or-uncomment-to-the-line)
@@ -326,6 +333,7 @@
   )
 ;;other settings
 ;reload ~/.emacs
+(tool-bar-mode -1)
 (defun reload-init-file ()
   (interactive)
   (load-file "~/.emacs"))
