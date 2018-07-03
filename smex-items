@@ -1,8 +1,8 @@
 
 ;; ----- smex-history -----
 (
- load-theme
  list-packages
+ load-theme
  erc-tls
  magit-version
  w3m
@@ -13,7 +13,7 @@
 ;; ----- smex-data -----
 (
  (customize . 4)
- (list-packages . 19)
+ (list-packages . 20)
  (package-install . 1)
  (emms . 4)
  (emms-add-directory-tree . 6)
