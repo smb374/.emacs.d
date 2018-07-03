@@ -1,6 +1,7 @@
 ;;; package --- Summary
 ;;; Commentary:
 (require 'package)
+;;; Code:
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
@@ -50,7 +51,7 @@
  '(icon-map-list (quote (x-gtk-stock-map)))
  '(package-selected-packages
    (quote
-    (dashboard smart-mode-line-powerline-theme smart-mode-line airline-themes spaceline-all-the-icons spaceline powerline-evil powerline spacemacs-theme emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
+    (evil-vimish-fold dashboard smart-mode-line-powerline-theme smart-mode-line airline-themes spaceline-all-the-icons spaceline powerline-evil powerline spacemacs-theme emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
  '(powerline-gui-use-vcs-glyph t)
  '(powerline-height nil)
  '(w3m-default-display-inline-images t))
@@ -114,7 +115,6 @@
   :ensure t
   :config
   (nyan-mode)
-  (setq nyan-animate-nyancat t)
   (setq nyan-wavy-trail t)
   )
 ;; dashboard
@@ -200,6 +200,12 @@
 	:config
 	(global-evil-search-highlight-persist t)
 	)
+  (use-package evil-vimish-fold
+    :ensure t
+    :config
+    (require 'evil-vimish-fold)
+    (evil-vimish-fold-mode 1)
+    )
   )
 (use-package emms
   :ensure t
@@ -240,6 +246,9 @@
   :ensure t
   :config
   (require 'helm-config)
+  (require 'helm-misc)
+  (require 'helm-projectile)
+  (require 'helm-locate)
   (setq helm-quick-update t)
   (setq helm-bookmark-show-location t)
   (setq helm-buffers-fuzzy-matching t)
@@ -317,7 +326,7 @@
   (require 'neotree)
   (setq neo-smart-open t)
   (setq projectile-switch-project-action 'neotree-projectile-action)
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq neo-theme '(icon arrow))
   )
 ; Emacs key bindings(nerd commenter)
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
@@ -327,7 +336,7 @@
 
 ; Vim key bindings
 ;;neotree
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+;(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)

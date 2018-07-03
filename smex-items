@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
- customize
- spaceline-compile
  list-packages
+ outline-mode
+ customize
  load-theme
  erc-tls
  magit-version
- w3m
+ emms-playlist-clear
 )
 
 ;; ----- smex-data -----
 (
  (customize . 6)
- (list-packages . 20)
+ (list-packages . 22)
  (package-install . 1)
  (emms . 4)
  (emms-add-directory-tree . 6)
@@ -32,4 +32,5 @@
  (magit-version . 1)
  (erc-tls . 1)
  (spaceline-compile . 1)
+ (outline-mode . 1)
 )
