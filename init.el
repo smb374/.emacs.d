@@ -1,7 +1,6 @@
 ;;; package --- Summary
 ;;; Commentary:
 (require 'package)
-;;; Code:
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
@@ -98,6 +97,7 @@
 ;;   (spaceline-all-the-icons--setup-neotree)
 ;;   )
 ;;auto pair
+
 (electric-pair-mode 1)
 (setq eletric-pair-pairs '(
         (?\` . ?\`)
@@ -182,7 +182,7 @@
   (use-package evil-surround
     :ensure t
     :config
-    (global-evil-surround-mode)
+    (global-evil-surround-mode 1)
 	)
   (use-package evil-indent-textobject
     :ensure t
