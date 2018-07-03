@@ -84,9 +84,8 @@
                                         ;(powerline-evil-vim-color-theme)
                                         ;(powerline-default-theme)
   (require 'airline-themes)
-  (load-theme 'airline-molokai) 
+  (load-theme 'airline-molokai)
   )
-;;auto pair
 ;; (use-package spaceline
 ;;   :ensure t
 ;;   :config
@@ -101,6 +100,7 @@
 ;;   (spaceline-all-the-icons--setup-git-ahead)
 ;;   (spaceline-all-the-icons--setup-neotree)
 ;;   )
+;;auto pair
 (electric-pair-mode 1)
 (setq eletric-pair-pairs '(
         (?\` . ?\`)
@@ -151,7 +151,6 @@
 	  "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
 	  "cc" 'evilnc-copy-and-comment-lines
 	  "cp" 'evilnc-comment-or-uncomment-paragraphs
-	  "cr" 'comment-or-uncomment-region
 	  "cv" 'evilnc-toggle-invert-comment-line-by-line
 	  "."  'evilnc-copy-and-comment-operator
 	  "\\" 'evilnc-comment-operator ; if you prefer backslash key
@@ -167,6 +166,7 @@
 	  "k"  'kill-buffer
 	  "en" 'next-error
 	  "ep" 'previous-error
+          "cd" 'cd
 	 )
 	)
   (use-package evil-surround
@@ -253,7 +253,7 @@
   ;(define-key company-active-map [return] 'company-complete-selection)
   (define-key company-active-map (kbd "ESC") 'company-abort)
   ;(define-key company-active-map [tab] 'company-complete-common-or-selection)
-  (define-key company-active-map (kbd "?\t") 'company-complete-common-or-selection)
+  (define-key company-active-map (kbd "?\t") 'company-complete-selection)
   (with-eval-after-load 'company
     (define-key company-active-map (kbd "C-n") #'company-select-next)
 	(define-key company-active-map (kbd "C-p") #'company-select-previous)
