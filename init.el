@@ -76,19 +76,18 @@
   (add-to-list 'evil-buffer-regexps '("\\*terminal\\*" . emacs))
   )
 ;;powerline
+;;;spaceline
 ;; (use-package smart-mode-line
 ;;   :ensure t
 ;;   :config
 ;;   (setq sml/theme 'powerline)
 ;;   (sml/setup)
 ;;   )
+;;;powerline
 (use-package powerline
   :ensure t
   :config
   (require 'powerline)
-  (require 'powerline-evil)
-                                        ;(powerline-evil-vim-color-theme)
-                                        ;(powerline-default-theme)
   (require 'airline-themes)
   (load-theme 'airline-badwolf)
   )
@@ -116,12 +115,6 @@
 	))
 (setq-default indent-tabs-mode nil)
 (global-set-key (kbd "M-p") 'ace-window)
-;; (use-package symon
-;;   :ensure t
-;;   :config
-;;   (symon-mode)
-;;   ;;(setq symon-sparkline-type gridded)
-;;   )
 (use-package nyan-mode
   :ensure t
   :config
@@ -304,7 +297,6 @@
   (setq linum-format "%d ")
   )
 
-;; evil keys
 (require 'neotree)
 ; Emacs key bindings(nerd commenter)
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
@@ -341,6 +333,7 @@
 ;buffer switching
 (global-set-key (kbd "<C-M-left>") 'previous-buffer)
 (global-set-key (kbd "<C-M-right>") 'next-buffer)
+(require 'org)
 (setq org-startup-indented t);set org indent mode
 (global-set-key (kbd "C-x C-t") 'term);call terminal
 (setq vc-follow-symlinks t);follow symlink by default
@@ -372,5 +365,5 @@
   (when (and (eq (framep (selected-frame)) t)
          (getenv "DISPLAY" (selected-frame)))
     (x-terminal-copy text)))
-(provide '.emacs)
+(provide 'init)
 ;;;
