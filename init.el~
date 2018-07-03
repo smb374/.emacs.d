@@ -24,7 +24,7 @@
  '(company-tooltip-idle-delay 0.1)
  '(custom-safe-themes
    (quote
-    ("946e871c780b159c4bb9f580537e5d2f7dba1411143194447604ecbaf01bd90c" "01e067188b0b53325fc0a1c6e06643d7e52bc16b6653de2926a480861ad5aa78" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "a94f1a015878c5f00afab321e4fef124b2fc3b823c8ddd89d360d710fc2bddfc" "0cd56f8cd78d12fc6ead32915e1c4963ba2039890700458c13e12038ec40f6f5" "73a13a70fd111a6cd47f3d4be2260b1e4b717dbf635a9caee6442c949fad41cd" "3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" "f27c3fcfb19bf38892bc6e72d0046af7a1ded81f54435f9d4d09b3bff9c52fc1" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" default)))
+    ("da538070dddb68d64ef6743271a26efd47fbc17b52cc6526d932b9793f92b718" "66aea5b7326cf4117d63c6694822deeca10a03b98135aaaddb40af99430ea237" "1b27e3b3fce73b72725f3f7f040fd03081b576b1ce8bbdfcb0212920aec190ad" "9b1c580339183a8661a84f5864a6c363260c80136bd20ac9f00d7e1d662e936a" "228c0559991fb3af427a6fa4f3a3ad51f905e20f481c697c6ca978c5683ebf43" "158013ec40a6e2844dbda340dbabda6e179a53e0aea04a4d383d69c329fba6e6" "251348dcb797a6ea63bbfe3be4951728e085ac08eee83def071e4d2e3211acc3" "946e871c780b159c4bb9f580537e5d2f7dba1411143194447604ecbaf01bd90c" "01e067188b0b53325fc0a1c6e06643d7e52bc16b6653de2926a480861ad5aa78" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "a94f1a015878c5f00afab321e4fef124b2fc3b823c8ddd89d360d710fc2bddfc" "0cd56f8cd78d12fc6ead32915e1c4963ba2039890700458c13e12038ec40f6f5" "73a13a70fd111a6cd47f3d4be2260b1e4b717dbf635a9caee6442c949fad41cd" "3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" "f27c3fcfb19bf38892bc6e72d0046af7a1ded81f54435f9d4d09b3bff9c52fc1" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" default)))
  '(emms-player-mplayer
    (quote
     (*player*
@@ -51,6 +51,7 @@
  '(package-selected-packages
    (quote
     (smart-mode-line-powerline-theme smart-mode-line airline-themes spaceline-all-the-icons spaceline powerline-evil powerline spacemacs-theme emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
+ '(powerline-gui-use-vcs-glyph t)
  '(w3m-default-display-inline-images t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -65,32 +66,21 @@
 )
 (load-theme 'monokai t)
 ;;evil key binds
-(with-eval-after-load 'evil
-  ;; use evil mode in the buffer below.
-  (add-to-list 'evil-buffer-regexps '("\\*Packages\\*" . normal))
-  ;(add-to-list 'evil-buffer-regexps '("\\*NeoTree\\*" . normal))
-  (add-to-list 'evil-buffer-regexps '("\\*Help\\*" . normal))
-  ;(add-to-list 'evil-buffer-regexps '("\\*\\*" . normal))
-  (add-to-list 'evil-buffer-regexps '("2048" . insert))
-  (add-to-list 'evil-buffer-regexps '("w3m" . insert))
-  (add-to-list 'evil-buffer-regexps '("\\*terminal\\*" . emacs))
-  )
 ;;powerline
+;;;spaceline
 ;; (use-package smart-mode-line
 ;;   :ensure t
 ;;   :config
 ;;   (setq sml/theme 'powerline)
 ;;   (sml/setup)
 ;;   )
+;;;powerline
 (use-package powerline
   :ensure t
   :config
   (require 'powerline)
-  (require 'powerline-evil)
-                                        ;(powerline-evil-vim-color-theme)
-                                        ;(powerline-default-theme)
   (require 'airline-themes)
-  (load-theme 'airline-molokai)
+  (load-theme 'airline-badwolf)
   )
 ;; (use-package spaceline
 ;;   :ensure t
@@ -116,12 +106,6 @@
 	))
 (setq-default indent-tabs-mode nil)
 (global-set-key (kbd "M-p") 'ace-window)
-;; (use-package symon
-;;   :ensure t
-;;   :config
-;;   (symon-mode)
-;;   ;;(setq symon-sparkline-type gridded)
-;;   )
 (use-package nyan-mode
   :ensure t
   :config
@@ -129,10 +113,10 @@
   (setq nyan-animate-nyancat t)
   (setq nyan-wavy-trail t)
   )
-(require 'evil)
 (use-package evil
   :ensure t
   :config
+  (require 'evil)
   (require 'evil-leader)
   (setq evil-leader/in-all-states 1)
   (global-evil-leader-mode)
@@ -148,6 +132,16 @@
   (setq evil-replace-state-cursor '("#ff0000" bar))
   (setq evil-operator-state-cursor '("#ff0000" hbar))
   ;; More configuration goes here
+  (with-eval-after-load 'evil
+    ;; use evil mode in the buffer below.
+    (add-to-list 'evil-buffer-regexps '("\\*Packages\\*" . normal))
+    ;(add-to-list 'evil-buffer-regexps '("\\*NeoTree\\*" . normal))
+    (add-to-list 'evil-buffer-regexps '("\\*Help\\*" . normal))
+    ;(add-to-list 'evil-buffer-regexps '("\\*\\*" . normal))
+    (add-to-list 'evil-buffer-regexps '("2048" . insert))
+    (add-to-list 'evil-buffer-regexps '("w3m" . insert))
+    (add-to-list 'evil-buffer-regexps '("\\*terminal\\*" . emacs))
+    )
   (use-package evil-leader
 	:ensure t
 	:config
@@ -304,8 +298,14 @@
   (setq linum-format "%d ")
   )
 
-;; evil keys
-(require 'neotree)
+(use-package neotree
+  :ensure t
+  :config
+  (require 'neotree)
+  (setq neo-smart-open t)
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  )
 ; Emacs key bindings(nerd commenter)
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 (global-set-key (kbd "C-c l") 'evilnc-quick-comment-or-uncomment-to-the-line)
@@ -334,23 +334,26 @@
   )
 ;;other settings
 ;reload ~/.emacs
+(tool-bar-mode -1)
 (defun reload-init-file ()
+  "Reload Config."
   (interactive)
   (load-file "~/.emacs"))
 (global-set-key (kbd "C-c C-l") 'reload-init-file)
 ;buffer switching
 (global-set-key (kbd "<C-M-left>") 'previous-buffer)
 (global-set-key (kbd "<C-M-right>") 'next-buffer)
+(require 'org)
 (setq org-startup-indented t);set org indent mode
 (global-set-key (kbd "C-x C-t") 'term);call terminal
 (setq vc-follow-symlinks t);follow symlink by default
 ;; update title of term
-(defun update-title ()
-  (interactive)
-  (if (getenv "STY")	; check whether in GNU screen
-	  (send-string-to-terminal (concat "\033k\033\134\033k" "Emacs("(buffer-name)")" "\033\134"))
-	(send-string-to-terminal (concat "\033]2; " "Emacs("(buffer-name)")" "\007"))))
-(add-hook 'post-command-hook 'update-title)
+;; (defun update-title ()
+;;   (interactive)
+;;   (if (getenv "STY")	; check whether in GNU screen
+;; 	  (send-string-to-terminal (concat "\033k\033\134\033k" "Emacs("(buffer-name)")" "\033\134"))
+;; 	(send-string-to-terminal (concat "\033]2; " "Emacs("(buffer-name)")" "\007"))))
+;; (add-hook 'post-command-hook 'update-title)
 ;; xsel
 (defmacro with-x-environment (&rest body)
   `(let ((process-environment
@@ -372,5 +375,5 @@
   (when (and (eq (framep (selected-frame)) t)
          (getenv "DISPLAY" (selected-frame)))
     (x-terminal-copy text)))
-(provide '.emacs)
+(provide 'init)
 ;;;
