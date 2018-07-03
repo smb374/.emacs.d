@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
- erc-tls
+ load-theme
  list-packages
+ erc-tls
  magit-version
  w3m
  emms-playlist-clear
  emms-add-directory-tree
- emms-bilibili
 )
 
 ;; ----- smex-data -----
 (
  (customize . 4)
- (list-packages . 16)
+ (list-packages . 18)
  (package-install . 1)
  (emms . 4)
  (emms-add-directory-tree . 6)
@@ -28,7 +28,7 @@
  (emms-play-file . 1)
  (untabify . 4)
  (ycmd-open . 1)
- (load-theme . 4)
+ (load-theme . 8)
  (magit-version . 1)
  (erc-tls . 1)
 )
