@@ -13,7 +13,7 @@
 ;; ----- smex-data -----
 (
  (customize . 4)
- (list-packages . 18)
+ (list-packages . 19)
  (package-install . 1)
  (emms . 4)
  (emms-add-directory-tree . 6)
@@ -28,7 +28,7 @@
  (emms-play-file . 1)
  (untabify . 4)
  (ycmd-open . 1)
- (load-theme . 8)
+ (load-theme . 19)
  (magit-version . 1)
  (erc-tls . 1)
 )
