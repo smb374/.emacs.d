@@ -2,18 +2,18 @@
 ;; ----- smex-history -----
 (
  list-packages
+ term
+ linum-mode
  outline-mode
  customize
  load-theme
  erc-tls
- magit-version
- emms-playlist-clear
 )
 
 ;; ----- smex-data -----
 (
  (customize . 6)
- (list-packages . 22)
+ (list-packages . 29)
  (package-install . 1)
  (emms . 4)
  (emms-add-directory-tree . 6)
@@ -21,7 +21,7 @@
  (dionysos-fs-list . 1)
  (w3m . 3)
  (w3m-fb-mode . 1)
- (linum-mode . 1)
+ (linum-mode . 3)
  (emms-bilibili . 4)
  (emms-playlist-clear . 6)
  (emms-play-url . 1)
@@ -33,4 +33,5 @@
  (erc-tls . 1)
  (spaceline-compile . 1)
  (outline-mode . 1)
+ (term . 1)
 )

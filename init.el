@@ -51,7 +51,7 @@
  '(icon-map-list (quote (x-gtk-stock-map)))
  '(package-selected-packages
    (quote
-    (evil-vimish-fold dashboard smart-mode-line-powerline-theme smart-mode-line airline-themes spaceline-all-the-icons spaceline powerline-evil powerline spacemacs-theme emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
+    (mode-icons telephone-line vimrc-mode evil-vimish-fold dashboard smart-mode-line-powerline-theme smart-mode-line airline-themes spaceline-all-the-icons spaceline powerline-evil powerline spacemacs-theme emamux-ruby-test emamux color-theme-molokai color-theme-approximate gruvbox-theme color-theme-sanityinc-tomorrow color-theme-wombat sound-wav mpv emms-player-simple-mpv evil-terminal-cursor-changer evil-tabs dionysos bongo emms-mode-line-cycle emms-state emms-bilibili helm-emmet emmet-mode helm-git magit helm-projectile helm-unicode helm ycmd eslint-fix elisp-lint 0blayout flycheck-ycmd company-ycmd neotree 2048-game smex yasnippet-snippets yasnippet w3m nyan-mode figlet symon doom-themes ample-theme monokai-theme autopair company-lua company-c-headers company evil-indent-textobject evil-leader use-package ace-window evil-visualstar evil-surround evil-nerd-commenter evil-matchit evil-escape)))
  '(powerline-gui-use-vcs-glyph t)
  '(powerline-height nil)
  '(w3m-default-display-inline-images t))
@@ -67,24 +67,23 @@
   (color-theme-approximate-on)
 )
 (load-theme 'monokai t)
-;;evil key binds
-;;powerline
-;;;spaceline
+;; modeline
 ;; (use-package smart-mode-line
 ;;   :ensure t
 ;;   :config
 ;;   (setq sml/theme 'powerline)
 ;;   (sml/setup)
 ;;   )
-;; powerline
-(use-package powerline
+;;; powerline
+(use-package telephone-line
   :ensure t
   :config
-  (require 'powerline)
+  (require 'telephone-line)
   (require 'airline-themes)
-  (load-theme 'airline-badwolf)
+  ;; (load-theme 'airline-badwolf)
+  (telephone-line-mode 1)
   )
-
+;;; use spaceline if in window system.
 (when window-system
     (progn
       (use-package spaceline
@@ -92,9 +91,22 @@
        :config
        (require 'spaceline-config)
        (setq powerline-default-separator 'arrow)
-       (spaceline-compile)
        (spaceline-helm-mode t)
        (spaceline-spacemacs-theme)
+       (use-package spaceline-all-the-icons
+         :ensure t
+         :config
+         (spaceline-all-the-icons-theme)
+         (spaceline-all-the-icons--setup-package-updates)
+         (spaceline-all-the-icons--setup-git-ahead)
+         (spaceline-all-the-icons--setup-neotree)
+         (setq spaceline-all-the-icons-separator-type 'arrow)
+         (setq spaceline-all-the-icons-primary-separator "")
+         )
+       (setq powerline-height 20)
+       (setq powerline-raw " ")
+       (setq ns-use-srgb-colorspace nil)
+       (spaceline-compile)
        )
      )
 )
@@ -111,12 +123,12 @@
 	))
 (setq-default indent-tabs-mode nil)
 (global-set-key (kbd "M-p") 'ace-window)
-(use-package nyan-mode
-  :ensure t
-  :config
-  (nyan-mode)
-  (setq nyan-wavy-trail t)
-  )
+;; (use-package nyan-mode
+;;   :ensure t
+;;   :config
+;;   (nyan-mode)
+;;   (setq nyan-wavy-trail t)
+;;   )
 ;; dashboard
 ;; (use-package dashboard
 ;;   :ensure t
@@ -326,7 +338,7 @@
   (require 'neotree)
   (setq neo-smart-open t)
   (setq projectile-switch-project-action 'neotree-projectile-action)
-  (setq neo-theme '(icon arrow))
+  (setq neo-theme  (if (display-graphic-p) 'icons '(icons arrow)))
   )
 ; Emacs key bindings(nerd commenter)
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
@@ -354,6 +366,15 @@
   :config
   (require 'emamux)
   )
+(use-package vimrc-mode
+  :ensure t
+  :config
+  (require 'vimrc-mode)
+  (add-to-list 'auto-mode-alist '("\\.vim\\(rc\\)?\\'" . vimrc-mode))
+  )
+(add-to-list 'load-path "~/.local/share/icons-in-terminal/")
+(require 'icons-in-terminal)
+(insert (icons-in-terminal 'oct_flame))
 ;;other settings
 ;reload ~/.emacs
 (tool-bar-mode -1)
