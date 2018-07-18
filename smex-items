@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
+ untabify
  list-packages
+ load-theme
  term
  linum-mode
  outline-mode
  customize
- load-theme
- erc-tls
 )
 
 ;; ----- smex-data -----
 (
  (customize . 6)
- (list-packages . 29)
+ (list-packages . 30)
  (package-install . 1)
  (emms . 4)
  (emms-add-directory-tree . 6)
@@ -26,9 +26,9 @@
  (emms-playlist-clear . 6)
  (emms-play-url . 1)
  (emms-play-file . 1)
- (untabify . 4)
+ (untabify . 6)
  (ycmd-open . 1)
- (load-theme . 19)
+ (load-theme . 26)
  (magit-version . 1)
  (erc-tls . 1)
  (spaceline-compile . 1)
